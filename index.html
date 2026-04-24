@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Gargotte | Restaurant Royan</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#003366',
+                        sand: '#D4B996',
+                        cream: '#F5F5DC',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .serif { font-family: 'Playfair Display', serif; }
+        .form-input { 
+            background: transparent; 
+            border-bottom: 2px solid #003366; 
+            padding: 0.75rem 0; 
+            width: 100%; 
+            outline: none; 
+            transition: border-color 0.3s;
+        }
+        .form-input:focus { border-color: #D4B996; }
+        .glass { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="bg-cream text-navy font-sans antialiased">
+
+    <!-- Header / Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-cream/90 backdrop-blur-md border-b border-navy/10 px-6 py-4 md:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-black italic serif tracking-tighter">LA GARGOTTE</div>
+            <div class="hidden md:flex gap-8 text-[10px] uppercase font-bold tracking-[0.3em]">
+                <a href="#hero" class="hover:text-sand transition-colors">Accueil</a>
+                <a href="#carte" class="hover:text-sand transition-colors">La Carte</a>
+                <a href="#reservation" class="hover:text-sand transition-colors">Réserver</a>
+                <button onclick="openManager()" class="border-b-2 border-navy pb-0.5 hover:text-sand hover:border-sand transition-all">Espace Gérant</button>
+            </div>
+            <!-- Mobile Menu Switch -->
+            <div class="md:hidden">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex flex-col md:flex-row pt-20">
+        <div class="w-full md:w-7/12 p-8 md:p-20 flex flex-col justify-center border-r border-navy/10">
+            <span class="text-[10px] uppercase tracking-[0.5em] font-black opacity-50 mb-6">Royan • Face à l'Océan</span>
+            <h1 class="text-6xl md:text-9xl font-black leading-[0.85] italic serif mb-10 -ml-1">
+                L'Océan à<br>votre table.
+            </h1>
+            <p class="max-w-md text-sm leading-relaxed opacity-80 mb-12 font-medium italic">
+                Une cuisine d'instinct, portée par les marées et les trésors de la criée de Royan.
+            </p>
+            <div class="flex items-center gap-6 group cursor-pointer">
+                <div class="w-16 h-16 rounded-full border border-navy flex items-center justify-center group-hover:bg-navy group-hover:text-cream transition-all duration-500">
+                    <i data-lucide="arrow-right" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs uppercase tracking-[0.3em] font-black">Découvrir l'histoire</span>
+            </div>
+        </div>
+        <div class="w-full md:w-5/12 relative min-h-[400px]">
+            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=1000" class="absolute inset-0 w-full h-full object-cover">
+        </div>
+    </section>
+
+    <!-- La Carte Section -->
+    <section id="carte" class="py-24 px-8 md:px-20 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl serif italic font-black mb-20 text-center uppercase tracking-tighter">Les Suggestions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
+                <!-- Plat 1 -->
+                <div class="border-t border-navy/20 pt-8">
+                    <h3 class="serif italic text-2xl mb-4">Huîtres n°3</h3>
+                    <p class="text-xs opacity-60 leading-relaxed mb-6">Marennes-Oléron, beurre de baratte au sel de l'Île de Ré, pain de seigle maison.</p>
+                    <span class="text-lg font-black italic">24€</span>
+                </div>
+                <!-- Plat 2 -->
+                <div class="border-t border-navy/20 pt-8">
+                    <h3 class="serif italic text-2xl mb-4">Éclade de Moules</h3>
+                    <p class="text-xs opacity-60 leading-relaxed mb-6">Moules de bouchot fumées aux aiguilles de pin, une tradition royannaise.</p>
+                    <span class="text-lg font-black italic">28€</span>
+                </div>
+                <!-- Plat 3 -->
+                <div class="border-t border-navy/20 pt-8">
+                    <h3 class="serif italic text-2xl mb-4">Bar de Ligne</h3>
+                    <p class="text-xs opacity-60 leading-relaxed mb-6">Pêche du jour rôtie, émulsion salicorne et tombée d'épinards frais.</p>
+                    <span class="text-lg font-black italic">34€</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation" class="py-24 px-8 md:px-20">
+        <div class="max-w-3xl mx-auto bg-cream/50 p-12 md:p-20 border border-navy/5 shadow-2xl">
+            <h2 class="text-4xl serif italic mb-16 text-center">Réserver une table</h2>
+            <form id="resForm" class="space-y-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <label class="text-[10px] uppercase font-black tracking-widest opacity-50 block mb-2">Votre Nom</label>
+                        <input type="text" id="resName" class="form-input" placeholder="Ex: Jean Dupont" required>
+                    </div>
+                    <div>
+                        <label class="text-[10px] uppercase font-black tracking-widest opacity-50 block mb-2">Nombre de couverts</label>
+                        <select id="resGuests" class="form-input">
+                            <option>2 Personnes</option>
+                            <option>3 Personnes</option>
+                            <option>4 Personnes</option>
+                            <option>5+ Personnes</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <label class="text-[10px] uppercase font-black tracking-widest opacity-50 block mb-2">Date</label>
+                        <input type="date" id="resDate" class="form-input" required>
+                    </div>
+                    <div>
+                        <label class="text-[10px] uppercase font-black tracking-widest opacity-50 block mb-2">Heure</label>
+                        <input type="time" id="resTime" class="form-input" required>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-navy text-cream py-6 uppercase text-[10px] font-black tracking-[0.5em] hover:bg-sand hover:text-navy transition-all">
+                    Confirmer la réservation
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Manager View (Hidden by default) -->
+    <section id="manager" class="hidden fixed inset-0 z-[100] bg-navy text-cream p-8 md:p-20 overflow-y-auto">
+        <button onclick="closeManager()" class="absolute top-8 right-8 uppercase text-xs font-black tracking-widest flex items-center gap-2">
+            Fermer <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+        <div class="max-w-4xl mx-auto pt-10 text-center">
+            <h2 class="text-5xl serif italic mb-12">Gestion des Réservations</h2>
+            <div id="bookingList" class="space-y-4 text-left">
+                <!-- Simulation of readings -->
+                <div class="bg-white/10 p-6 flex justify-between items-center border border-white/10 italic">
+                    <span>Famille Martin (4 pers.)</span>
+                    <span class="font-bold">12:30</span>
+                </div>
+                <p class="text-xs opacity-50 mt-12 italic">Connecté à l'interface Firebase (Simulation active)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy text-cream py-16 px-8 text-center border-t border-white/5">
+        <div class="text-xl serif italic mb-8 tracking-tighter">LA GARGOTTE</div>
+        <div class="flex justify-center gap-8 mb-10">
+            <a href="#" class="opacity-50 hover:opacity-100 transition-opacity"><i data-lucide="instagram"></i></a>
+            <a href="#" class="opacity-50 hover:opacity-100 transition-opacity"><i data-lucide="facebook"></i></a>
+        </div>
+        <div class="text-[10px] uppercase tracking-[0.3em] font-bold opacity-30">
+            42 Boulevard de la Grandière, 17200 Royan • 05 46 XX XX XX
+        </div>
+    </footer>
+
+    <script>
+        // Init Icons
+        lucide.createIcons();
+
+        // Booking Logic
+        document.getElementById('resForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('resName').value;
+            alert(`Merci ${name}, votre réservation est enregistrée ! (Simulation Firebase active)`);
+            this.reset();
+        });
+
+        // Manager Modal Logic
+        function openManager() {
+            const pass = prompt("Accès Gérant - Veuillez saisir le mot de passe :");
+            if(pass === "17200") { // Mot de passe simple pour le prototype
+                document.getElementById('manager').classList.remove('hidden');
+            } else {
+                alert("Accès refusé.");
+            }
+        }
+
+        function closeManager() {
+            document.getElementById('manager').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
